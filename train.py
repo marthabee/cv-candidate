@@ -49,7 +49,6 @@ with nlp.disable_pipes(*other_pipes):
         random.shuffle(train_data)
         losses = {}
 
-        # Batch the examples and iterate over them
         for batch in spacy.util.minibatch(train_data, size=2):  
             examples = [Example.from_dict(nlp.make_doc(text), annotations) for text, annotations in batch]
             nlp.update(examples, drop=0.5, losses=losses)  
