@@ -15,6 +15,14 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, EqualTo, Email
 
+from pymongo import MongoClient
+
+client = MongoClient(
+    "mongodb+srv://bee29082004:pj2LSo7MDI3LaXPc@marthabee.ytah6.mongodb.net/mongodb+srv://bee29082004:pj2LSo7MDI3LaXPc@marthabee.ytah6.mongodb.net/",
+    tls=True,
+    tlsAllowInvalidCertificates=True  # Thử thêm tùy chọn này nếu bạn gặp lỗi chứng chỉ
+)
+
 app = Flask(__name__)
 
 login_manager = LoginManager(app)
@@ -28,7 +36,7 @@ class User(UserMixin):
 
 @login_manager.user_loader
 def load_user(email):
-    client = MongoClient("MongDBURL") # Replace this with your own MongoDB url
+    client = MongoClient("mongodb+srv://bee29082004:pj2LSo7MDI3LaXPc@bee.ytah6.mongodb.net/talentmatch") # Replace this with your own MongoDB url
     db = client["login"]
     user_data = db.users.find_one({"email": email})
     if user_data:
@@ -43,7 +51,7 @@ class LoginForm(FlaskForm):
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        client = MongoClient("MongDBURL")
+        client = MongoClient("mongodb+srv://bee29082004:pj2LSo7MDI3LaXPc@bee.ytah6.mongodb.net/talentmatch")
         db = client["login"]
         user = db.users.find_one({"email": form.email.data})
         matched = check_password_hash(user['password'], form.password.data)
@@ -148,7 +156,7 @@ def match_resumes():
     #print(technology_names)
 
 
-    client = MongoClient("MongDBURL")
+    client = MongoClient("mongodb+srv://bee29082004:pj2LSo7MDI3LaXPc@cluster0.ytah6.mongodb.net/")
     db = client["candidates"]
     users = db["candidates"]
 

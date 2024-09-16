@@ -1,14 +1,14 @@
 {
   "lang":"en",
   "name":"core_web_sm",
-  "version":"3.6.0",
+  "version":"3.7.1",
   "description":"English pipeline optimized for CPU. Components: tok2vec, tagger, parser, senter, ner, attribute_ruler, lemmatizer.",
   "author":"Explosion",
   "email":"contact@explosion.ai",
   "url":"https://explosion.ai",
   "license":"MIT",
-  "spacy_version":">=3.6.0,<3.7.0",
-  "spacy_git_version":"cb4fdc83e",
+  "spacy_version":">=3.7.2,<3.8.0",
+  "spacy_git_version":"bd2c17e20",
   "vectors":{
     "width":0,
     "vectors":0,
@@ -132,7 +132,6 @@
       "FAC",
       "GPE",
       "LANGUAGE",
-      "LANGUAGES",
       "LAW",
       "LOC",
       "MONEY",
@@ -496,7 +495,7 @@
         "f":0.701754386
       }
     },
-    "speed":8516.5316928954
+    "speed":7920.0598120459
   },
   "sources":[
     {
